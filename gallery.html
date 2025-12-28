@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фото-галерея - Новогодние украшения Москвы</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Дополнительные стили только для этой страницы */
+        .gallery-controls {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .gallery-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-btn:hover {
+            background: #ffdd59;
+            color: #0c2461;
+        }
+        
+        .gallery-btn.active {
+            background: #ffdd59;
+            color: #0c2461;
+            font-weight: bold;
+        }
+        
+        .gallery-description {
+            text-align: center;
+            margin-top: 20px;
+            font-style: italic;
+            color: #ffdd59;
+        }
+        
+        /* Задаем разные фоновые изображения для элементов галереи */
+        .gallery-item:nth-child(1) .gallery-img {
+            background-image: url('1.jpg');
+        }
+        
+        .gallery-item:nth-child(2) .gallery-img {
+            background-image: url('2.jpg');
+        }
+        
+        .gallery-item:nth-child(3) .gallery-img {
+            background-image: url('5.jpg');
+        }
+        
+        .gallery-item:nth-child(4) .gallery-img {
+            background-image: url('4.jpg');
+        }
+        
+        .gallery-item:nth-child(5) .gallery-img {
+            background-image: url('3.webp');
+        }
+        
+        .gallery-item:nth-child(6) .gallery-img {
+            background-image: url('7.jpg');
+        }
+        
+        .gallery-item:nth-child(7) .gallery-img {
+            background-image: url('6.jpg');
+        }
+        
+        .gallery-item:nth-child(8) .gallery-img {
+            background-image: url('8.jpg');
+        }
+        
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Новогодние украшения Москвы 2025-2026</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="locations.html">Главные площадки</a></li>
+                    <li><a href="gallery.html">Фото-галерея</a></li>
+                    <li><a href="history.html">История</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <h1 class="page-title">Фото-галерея новогодней Москвы</h1>
+        <p style="text-align: center; margin-bottom: 30px; font-size: 1.2rem;">Полюбуйтесь красотой новогодних украшений столицы</p>
+        
+        <div class="gallery-controls">
+            <button class="gallery-btn active" onclick="filterGallery('all')">Все фото</button>
+            <button class="gallery-btn" onclick="filterGallery('lights')">Иллюминация</button>
+            <button class="gallery-btn" onclick="filterGallery('trees')">Новогодние ели</button>
+            <button class="gallery-btn" onclick="filterGallery('decorations')">Украшения</button>
+        </div>
+        
+        <div class="gallery">
+            <div class="gallery-item" data-category="lights">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="trees">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="decorations">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="lights">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="trees">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="decorations">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="lights">
+                <div class="gallery-img"></div>
+            </div>
+            
+            <div class="gallery-item" data-category="decorations">
+                <div class="gallery-img"></div>
+            </div>
+        </div>
+        
+        <div class="gallery-description">
+            <p>Фотографии показывают, как преображается Москва в предновогодний период. 
+            Каждый год дизайнеры придумывают новые концепции украшения города.</p>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>Школьный проект "Новогодние украшения Москвы 2025-2026"</p>
+            
+        </div>
+    </footer>
+    
+    <script>
+        // Простой скрипт для фильтрации галереи
+        function filterGallery(category) {
+            // Убираем активный класс у всех кнопок
+            document.querySelectorAll('.gallery-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Добавляем активный класс нажатой кнопке
+            event.target.classList.add('active');
+            
+            // Показываем/скрываем элементы галереи
+            const items = document.querySelectorAll('.gallery-item');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.getAttribute('data-category') === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
